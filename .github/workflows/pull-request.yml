@@ -1,7 +1,7 @@
 name: Continuous Integration and Delivery
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -40,13 +40,3 @@ jobs:
 
     - name: Test with pytest
       run: poetry run pytest --cov=app --cov-fail-under=80 --cov-report xml
-
-    - name: "Upload coverage to Codecov"
-      uses: codecov/codecov-action@v1
-      with:
-        fail_ci_if_error: true
-
-    - name: "Upload coverage to Codecov"
-      uses: codecov/codecov-action@v1
-      with:
-        fail_ci_if_error: true
