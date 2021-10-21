@@ -27,6 +27,6 @@ repos:
 
       - id: bandit
         name: bandit
-        entry: poetry run bandit
+        entry: poetry run bandit -x tests/
         types: [python]
         language: system
