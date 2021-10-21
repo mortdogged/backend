@@ -13,18 +13,20 @@ repos:
         language: system
         args: ["--profile", "black"]
 
-  - repo: local
-    hooks:
       - id: black
         name: black
         entry: poetry run black
         types: [python]
         language: system
 
-  - repo: local
-    hooks:
       - id: flake8
         name: flake8
         entry: poetry run flake8 --max-line-length=88 --extend-ignore=E203
+        types: [python]
+        language: system
+
+      - id: bandit
+        name: bandit
+        entry: poetry run bandit
         types: [python]
         language: system
