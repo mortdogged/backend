@@ -5,15 +5,7 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# https://cryptography.io/en/latest/installation/#debian-ubuntu
-RUN apt-get update && apt-get install -y build-essential libssl-dev libffi-dev \
-    python3-dev cargo
-
 RUN pip install --upgrade pip \
-    && pip install poetry \
-    && poetry config virtualenvs.create false
-
-COPY ./pyproject.toml ./poetry.lock ./
-RUN poetry install --no-interaction --no-root
+    && pip install fastapi uvicorn --extra-index-url=https://www.piwheels.org/simple
 
 COPY . .
