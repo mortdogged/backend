@@ -1,0 +1,6 @@
+.venv/
+.dockerignore
+Dockerfile
+.coverage
+coverage.xml
+.pytest_cache
