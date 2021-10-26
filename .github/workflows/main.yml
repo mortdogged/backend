@@ -51,4 +51,7 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd backend && docker-compose down && docker-compose up --build
+          cd backend
+          git pull
+          docker-compose down
+          docker-compose up --build
