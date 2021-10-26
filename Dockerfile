@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # https://cryptography.io/en/latest/installation/#debian-ubuntu
-RUN apt-get install build-essential libssl-dev libffi-dev \
+RUN apt-get update && apt-get install build-essential libssl-dev libffi-dev \
     python3-dev cargo
 
 RUN pip install --upgrade pip \
