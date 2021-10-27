@@ -7,12 +7,12 @@
 
 ## Develop
 Installation
-```
+```bash
 poetry install
 poetry run pre-commit install
 ```
 
 Test
-```
+```bash
 poetry run pytest --cov=app --cov-fail-under=80 --cov-report xml
 ```
