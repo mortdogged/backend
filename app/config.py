@@ -1,5 +1,5 @@
 import logging
-from functools import cache
+from functools import lru_cache
 
 from pydantic import BaseSettings
 
@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     environment: str = "dev"
 
 
-@cache
+@lru_cache
 def get_settings() -> Settings:
     log.info("Loading config settings from the environment...")
     return Settings()
