@@ -14,7 +14,9 @@ async def get_summoner_by_name(name: str, platform: PLATFORMS):
             headers={"X-Riot-Token": get_settings().api_key},
         )
     response = r.json()
-    if response["status"]["message"] == "Data not found - summoner not found":
+    if response == {
+        "status": {"message": "Data not found - summoner not found", "status_code": 404}
+    }:
         raise SummonerNotFoundException
     return response
 
