@@ -5,14 +5,21 @@
   <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg" alt="Gitmoji">
 </a>
 
-## Develop
-Installation
+![architecture](./docs/architecture.png)
+
+### Installation
 ```bash
 poetry install
 poetry run pre-commit install
 ```
 
-Test
+### Test
 ```bash
 poetry run pytest --cov=app --cov-fail-under=80 --cov-report xml
+```
+
+### Run
+Fill the `.env` file and run:
+```
+docker-compose up --build
 ```
