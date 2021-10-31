@@ -8,4 +8,5 @@ services:
     ports:
       - 80:8000
     environment:
-      - ENVIRONMENT=dev
+      - ENVIRONMENT=${ENVIRONMENT}
+      - API_KEY=${API_KEY}
