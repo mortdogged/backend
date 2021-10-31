@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 
+from .api import profile
+
 
 def create_application() -> FastAPI:
     application = FastAPI()
-
-    @application.get("/ping")
-    async def pong():
-        return {"ping": "pong!"}
+    application.include_router(profile.router, prefix="/profile", tags=["profile"])
 
     return application
 

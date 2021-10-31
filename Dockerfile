@@ -6,6 +6,10 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN pip install --upgrade pip \
-    && pip install fastapi uvicorn --extra-index-url=https://www.piwheels.org/simple
+    && pip install \
+    fastapi \
+    uvicorn \
+    httpx \
+    --extra-index-url=https://www.piwheels.org/simple
 
 COPY . .
