@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 from fastapi import APIRouter, HTTPException
 
-from ..exceptions import SummonerNotFoundException
+from ..exceptions import InvalidAPIKeyException, SummonerNotFoundException
 from ..literals import PLATFORMS
 from ..models.profile import Homie, ProfileResponseSchema
 from .riot import get_entries_for_summoner, get_summoner_by_name
@@ -19,6 +19,10 @@ async def get_profile(platform: PLATFORMS, summoner_name: Homie):
     except SummonerNotFoundException:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail="Summoner not found"
+        )
+    except InvalidAPIKeyException:
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_GATEWAY, detail="Invalid API Key"
         )
 
     return summoner

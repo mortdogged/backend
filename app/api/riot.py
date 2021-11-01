@@ -1,7 +1,7 @@
 from httpx import AsyncClient
 
 from ..config import get_settings
-from ..exceptions import SummonerNotFoundException
+from ..exceptions import InvalidAPIKeyException, SummonerNotFoundException
 from ..literals import PLATFORMS
 
 BASE_URL = "https://{}.api.riotgames.com/tft"
@@ -18,6 +18,8 @@ async def get_summoner_by_name(name: str, platform: PLATFORMS):
         "status": {"message": "Data not found - summoner not found", "status_code": 404}
     }:
         raise SummonerNotFoundException
+    elif response == {"status": {"message": "Forbidden", "status_code": 403}}:
+        raise InvalidAPIKeyException
     return response
 
 
