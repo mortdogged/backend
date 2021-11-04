@@ -14,8 +14,12 @@ router = APIRouter()
 async def get_profile(platform: PLATFORMS, summoner_name: Homie):
     try:
         summoner = await get_summoner_by_name(summoner_name, platform)
-        entry = await get_entries_for_summoner(summoner["id"], platform)
-        summoner.update(entry[0])
+        entries = await get_entries_for_summoner(summoner["id"], platform)
+        for e in entries:
+            if e["queueType"] != "RANKED_TFT":
+                continue
+            summoner.update(e)
+
     except SummonerNotFoundException:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail="Summoner not found"

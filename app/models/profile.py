@@ -26,11 +26,11 @@ class ProfileResponseSchema(BaseModel):
     name: str
     profileIconId: int
     summonerLevel: int
+    leaguePoints: int = None
 
     # TODO: Literals?
-    tier: str
-    rank: str
+    tier: str = None
+    rank: str = None
 
-    wins: int
-    losses: int
-    hotStreak: bool
+    wins: int = None
+    losses: int = None
