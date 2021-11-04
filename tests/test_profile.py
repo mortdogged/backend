@@ -43,6 +43,7 @@ async def mock_get_entries_for_summoner(summoner_id, platform):
             "name": "Stradivari96",
             "profileIconId": 4627,
             "summonerLevel": 164,
+            "queueType": "RANKED_TFT",
             "tier": "MASTER",
             "rank": "I",
             "wins": 12,
