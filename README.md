@@ -21,5 +21,10 @@ poetry run pytest --cov=app --cov-fail-under=80 --cov-report xml
 ### Run
 Fill the `.env` file and run:
 ```
+poetry run python main.py
+```
+
+or
+```
 docker-compose up --build
 ```
