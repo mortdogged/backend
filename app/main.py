@@ -8,7 +8,7 @@ def create_application() -> FastAPI:
     application = FastAPI()
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=["https://mortdogged.com"],
         allow_methods=["*"],
         allow_headers=["*"],
     )
