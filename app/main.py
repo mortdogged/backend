@@ -1,16 +1,18 @@
 from fastapi import FastAPI
-from starlette.middleware import Middleware
-from starlette.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import profile
 
 
 def create_application() -> FastAPI:
-    middleware = [
-        Middleware(CORSMiddleware, allow_origins=["https://www.mortdogged.com"])
-    ]
+    application = FastAPI()
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
-    application = FastAPI(middleware=middleware)
     application.include_router(profile.router, prefix="/profile", tags=["profile"])
 
     return application
