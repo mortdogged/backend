@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException
 from ..exceptions import InvalidAPIKeyException, SummonerNotFoundException
 from ..literals import PLATFORMS
 from ..models.profile import Homie, ProfileResponseSchema
-from .riot import get_entries_for_summoner, get_summoner_by_name
+from .api.riot import get_entries_for_summoner, get_summoner_by_name
 
 router = APIRouter()
 
