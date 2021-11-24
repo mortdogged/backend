@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import profile
+from .routers import profile
 
 
 def create_application() -> FastAPI:
