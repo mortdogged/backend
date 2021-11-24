@@ -8,6 +8,7 @@ authors = ["Xiang Chen <xiangchenchen96@gmail.com>"]
 python = "^3.8"
 fastapi = {extras = ["all"], version = "^0.70.0"}
 httpx = "^0.20.0"
+redis = "^4.0.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

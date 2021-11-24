@@ -10,6 +10,7 @@ RUN pip install --upgrade pip \
     fastapi \
     uvicorn \
     httpx \
+    redis \
     pydantic[dotenv] \
     --extra-index-url=https://www.piwheels.org/simple
 

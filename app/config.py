@@ -9,6 +9,7 @@ log = logging.getLogger("uvicorn")
 class Settings(BaseSettings):
     api_key: str
     environment: str = "dev"
+    redis_url: str
 
 
 @lru_cache
