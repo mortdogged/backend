@@ -1,7 +1,6 @@
-version: '3.8'
+version: "3.8"
 
 services:
-
   web:
     build: .
     command: uvicorn app.main:app --workers 1 --host 0.0.0.0 --port 8000
@@ -10,3 +9,9 @@ services:
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
       - API_KEY=${API_KEY}
+      - REDIS_URL=${REDIS_URL}
+
+  redis-cache:
+    image: redis:latest
+    ports:
+      - 6379:6379
