@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 # https://pydantic-docs.helpmanual.io/usage/types/#custom-data-types
 class Homie(str):
-    homies = ["stradivari96", "frenfrenburger"]
+    homies = ["stradivari96", "frenfrenburger", "vivapy"]
 
     @classmethod
     def __get_validators__(cls):

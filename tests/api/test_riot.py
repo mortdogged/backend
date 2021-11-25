@@ -1,3 +1,5 @@
+import json
+
 import httpx
 import pytest
 
@@ -13,7 +15,18 @@ invalid_api_key = {"status": {"message": "Forbidden", "status_code": 403}}
 
 
 @pytest.mark.asyncio
-async def test_get_summoner_by_name(test_app, respx_mock):
+async def test_get_summoner_by_name_cached(test_app, monkeypatch):
+    monkeypatch.setattr(
+        "app.api.riot.client_redis.get", lambda x: json.dumps(summoner_response)
+    )
+    response = await get_summoner_by_name("stradivari96", "euw1")
+    assert response == summoner_response
+
+
+@pytest.mark.asyncio
+async def test_get_summoner_by_name(test_app, respx_mock, monkeypatch):
+    monkeypatch.setattr("app.api.riot.client_redis.get", lambda x: None)
+    monkeypatch.setattr("app.api.riot.client_redis.set", lambda x, y, ex: None)
     respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=summoner_response))
@@ -22,7 +35,9 @@ async def test_get_summoner_by_name(test_app, respx_mock):
 
 
 @pytest.mark.asyncio
-async def test_get_summoner_by_name_invalid_name(test_app, respx_mock):
+async def test_get_summoner_by_name_invalid_name(test_app, respx_mock, monkeypatch):
+    monkeypatch.setattr("app.api.riot.client_redis.get", lambda x: None)
+    monkeypatch.setattr("app.api.riot.client_redis.set", lambda x, y, ex: None)
     respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=summoner_not_found_response))
@@ -31,7 +46,9 @@ async def test_get_summoner_by_name_invalid_name(test_app, respx_mock):
 
 
 @pytest.mark.asyncio
-async def test_get_summoner_by_name_invalid_key(test_app, respx_mock):
+async def test_get_summoner_by_name_invalid_key(test_app, respx_mock, monkeypatch):
+    monkeypatch.setattr("app.api.riot.client_redis.get", lambda x: None)
+    monkeypatch.setattr("app.api.riot.client_redis.set", lambda x, y, ex: None)
     respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=invalid_api_key))
