@@ -7,12 +7,10 @@ from ..exceptions import InvalidAPIKeyException, SummonerNotFoundException
 from ..literals import PLATFORMS
 
 BASE_URL = "https://{}.api.riotgames.com/tft"
-client_redis = get_cache()
 
 
 async def get_summoner_by_name(name: str, platform: PLATFORMS):
-
-    response = client_redis.get(f"{name}-{platform}")
+    response = get_cache().get(f"{name}-{platform}")
     if not response:
 
         async with AsyncClient() as client:
@@ -21,7 +19,7 @@ async def get_summoner_by_name(name: str, platform: PLATFORMS):
                 headers={"X-Riot-Token": get_settings().api_key},
             )
         response = r.json()
-        client_redis.set(
+        get_cache().set(
             f"{name}-{platform}",
             json.dumps(response),
             ex=get_settings().cache_expired_time,

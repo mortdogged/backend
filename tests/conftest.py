@@ -10,6 +10,7 @@ from app.main import create_application
 def test_app():
     os.environ["ENVIRONMENT"] = "test"
     os.environ["API_KEY"] = "dummy_key"
+    os.environ["REDIS_URL"] = "redis://redis-cache"
     app = create_application()
 
     with TestClient(app) as test_client:
