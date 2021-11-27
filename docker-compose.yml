@@ -12,6 +12,6 @@ services:
       - REDIS_URL=${REDIS_URL}
 
   redis-cache:
-    image: redis:latest
+    image: redis:6.0-alpine
     ports:
       - 6379:6379
