@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 # https://pydantic-docs.helpmanual.io/usage/types/#custom-data-types
@@ -24,7 +24,7 @@ class Homie(str):
 
 class ProfileResponseSchema(BaseModel):
     name: str
-    profileIconId: int
+    profile_icon_url: HttpUrl
     summonerLevel: int
     leaguePoints: int = None
 
