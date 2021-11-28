@@ -5,12 +5,16 @@ from fastapi import APIRouter, HTTPException
 from ..api.riot import get_entries_for_summoner, get_summoner_by_name
 from ..exceptions import InvalidAPIKeyException, SummonerNotFoundException
 from ..literals import PLATFORMS
-from ..models.profile import Homie, ProfileResponseSchema
+from ..models.profile import Homie, Message, ProfileResponseSchema
 
 router = APIRouter()
 
 
-@router.get("/{platform}/{summoner_name}", response_model=ProfileResponseSchema)
+@router.get(
+    "/{platform}/{summoner_name}",
+    response_model=ProfileResponseSchema,
+    responses={404: {"model": Message}, 502: {"model": Message}},
+)
 async def get_profile(platform: PLATFORMS, summoner_name: Homie):
     try:
         summoner = await get_summoner_by_name(summoner_name, platform)
