@@ -14,6 +14,11 @@ router = APIRouter()
 async def get_profile(platform: PLATFORMS, summoner_name: Homie):
     try:
         summoner = await get_summoner_by_name(summoner_name, platform)
+        summoner["profile_icon_url"] = (
+            "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data"
+            f"/global/default/v1/profile-icons/{summoner['profileIconId']}.jpg"
+        )
+
         entries = await get_entries_for_summoner(summoner["id"], platform)
         for e in entries:
             if e["queueType"] != "RANKED_TFT":

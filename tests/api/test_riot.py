@@ -8,7 +8,14 @@ from app.api.riot import get_summoner_by_name
 from app.exceptions import InvalidAPIKeyException, SummonerNotFoundException
 
 # Mocks
-summoner_response = {"id": "pepe"}
+profile_response = {
+    "id": "pepe",
+    "profile_icon_url": (
+        "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data"
+        "/global/default/v1/profile-icons/1.jpg"
+    ),
+}
+summoner_response = {"id": "pepe", "profileIconId": 1}
 summoner_not_found_response = {
     "status": {"message": "Data not found - summoner not found", "status_code": 404}
 }
@@ -33,14 +40,14 @@ class FakeCacheNotFound:
 
 @pytest.mark.asyncio
 @patch("app.api.riot.get_cache", FakeCacheFound)
-async def test_get_summoner_by_name_cached(test_app, monkeypatch):
+async def test_get_summoner_by_name_cached(test_app):
     response = await get_summoner_by_name("stradivari96", "euw1")
     assert response == summoner_response
 
 
 @pytest.mark.asyncio
 @patch("app.api.riot.get_cache", FakeCacheNotFound)
-async def test_get_summoner_by_name(test_app, respx_mock, monkeypatch):
+async def test_get_summoner_by_name(test_app, respx_mock):
     respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=summoner_response))
@@ -50,7 +57,7 @@ async def test_get_summoner_by_name(test_app, respx_mock, monkeypatch):
 
 @pytest.mark.asyncio
 @patch("app.api.riot.get_cache", FakeCacheNotFound)
-async def test_get_summoner_by_name_invalid_name(test_app, respx_mock, monkeypatch):
+async def test_get_summoner_by_name_invalid_name(test_app, respx_mock):
     respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=summoner_not_found_response))
@@ -60,7 +67,7 @@ async def test_get_summoner_by_name_invalid_name(test_app, respx_mock, monkeypat
 
 @pytest.mark.asyncio
 @patch("app.api.riot.get_cache", FakeCacheNotFound)
-async def test_get_summoner_by_name_invalid_key(test_app, respx_mock, monkeypatch):
+async def test_get_summoner_by_name_invalid_key(test_app, respx_mock):
     respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=invalid_api_key))
