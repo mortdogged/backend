@@ -27,7 +27,7 @@ jobs:
       id: cache
       with:
         path: .venv
-        key: venv-${{ runner.os }}-${{ matrix.python-version }}
+        key: venv-${{ runner.os }}
 
     - name: Install dependencies
       run: poetry install
