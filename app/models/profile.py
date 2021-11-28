@@ -22,10 +22,6 @@ class Homie(str):
         return f"Homie({super().__repr__()})"
 
 
-class Message(BaseModel):
-    detail: str
-
-
 class ProfileResponseSchema(BaseModel):
     name: str
     profile_icon_url: HttpUrl
