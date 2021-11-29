@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
 from .consts import DESCRIPTION
-from .routers import profile
+from .routers import matches, profile
 
 
 def create_application() -> FastAPI:
@@ -16,6 +16,7 @@ def create_application() -> FastAPI:
     )
 
     app.include_router(profile.router, prefix="/profile", tags=["profile"])
+    app.include_router(matches.router, prefix="/matches", tags=["matches"])
 
     def custom_openapi():
         if app.openapi_schema:
