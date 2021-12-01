@@ -4,7 +4,7 @@ from unittest.mock import patch
 import httpx
 import pytest
 
-from app.api.riot import get_summoner_by_name
+from app.api.riot import get_matches, get_summoner_by_name
 from app.exceptions import InvalidAPIKeyException, SummonerNotFoundException
 
 # Mocks
@@ -48,10 +48,11 @@ async def test_get_summoner_by_name_cached(test_app):
 @pytest.mark.asyncio
 @patch("app.api.riot.get_cache", FakeCacheNotFound)
 async def test_get_summoner_by_name(test_app, respx_mock):
-    respx_mock.get(
+    route = respx_mock.get(
         "https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/stradivari96"
     ).mock(return_value=httpx.Response(204, json=summoner_response))
     response = await get_summoner_by_name("stradivari96", "euw1")
+    assert route.called
     assert response == summoner_response
 
 
@@ -73,3 +74,13 @@ async def test_get_summoner_by_name_invalid_key(test_app, respx_mock):
     ).mock(return_value=httpx.Response(204, json=invalid_api_key))
     with pytest.raises(InvalidAPIKeyException):
         await get_summoner_by_name("stradivari96", "euw1")
+
+
+@pytest.mark.asyncio
+async def test_get_matches(test_app, respx_mock):
+    respx_mock.get(
+        "https://europe.api.riotgames.com/tft/match/v1/matches/by-puuid/24/ids"
+    ).mock(return_value=httpx.Response(200, json=["1", "2", "3"]))
+
+    response = await get_matches(24, "europe")
+    assert response == ["1", "2", "3"]

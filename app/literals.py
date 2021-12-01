@@ -13,3 +13,5 @@ PLATFORMS = Literal[
     "tr1",
     "ru",
 ]
+
+REGIONS = Literal["americas", "asia", "europe"]

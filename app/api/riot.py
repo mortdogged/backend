@@ -4,7 +4,7 @@ from httpx import AsyncClient
 
 from ..config import get_cache, get_settings
 from ..exceptions import InvalidAPIKeyException, SummonerNotFoundException
-from ..literals import PLATFORMS
+from ..literals import PLATFORMS, REGIONS
 
 BASE_URL = "https://{}.api.riotgames.com/tft"
 
@@ -41,6 +41,15 @@ async def get_entries_for_summoner(summoner_id: str, platform: PLATFORMS):
     async with AsyncClient() as client:
         r = await client.get(
             f"{BASE_URL.format(platform)}/league/v1/entries/by-summoner/{summoner_id}",
+            headers={"X-Riot-Token": get_settings().api_key},
+        )
+    return r.json()
+
+
+async def get_matches(puuid: str, region: REGIONS):
+    async with AsyncClient() as client:
+        r = await client.get(
+            f"{BASE_URL.format(region)}/match/v1/matches/by-puuid/{puuid}/ids",
             headers={"X-Riot-Token": get_settings().api_key},
         )
     return r.json()
