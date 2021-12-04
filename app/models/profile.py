@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel, HttpUrl
 
 
@@ -22,11 +24,21 @@ class Homie(str):
         return f"Homie({super().__repr__()})"
 
 
+class Queues(BaseModel):
+    queueType: str
+    ratedTier: str
+    ratedRating: str
+    ratedRating: str
+    wins: int
+    losses: int
+
+
 class ProfileResponseSchema(BaseModel):
     name: str
     profile_icon_url: HttpUrl
     summonerLevel: int
     leaguePoints: int = None
+    other_queues: List[Queues]
 
     # TODO: Literals?
     tier: str = None

@@ -21,7 +21,7 @@ router = APIRouter()
 async def get_profile(platform: PLATFORMS, summoner_name: Homie):
     try:
         summoner = await get_summoner_by_name(summoner_name, platform)
-
+        summoner["other_queues"] = []
         summoner["profile_icon_url"] = (
             "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data"
             f"/global/default/v1/profile-icons/{summoner['profileIconId']}.jpg"
@@ -29,10 +29,10 @@ async def get_profile(platform: PLATFORMS, summoner_name: Homie):
 
         entries = await get_entries_for_summoner(summoner["id"], platform)
         for e in entries:
-            if e["queueType"] != "RANKED_TFT":
-                continue
-            summoner.update(e)
-
+            if e["queueType"] == "RANKED_TFT":
+                summoner.update(e)
+            else:
+                summoner["other_queues"].append(e)
     except SummonerNotFoundException:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail="Summoner not found"
