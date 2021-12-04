@@ -26,7 +26,21 @@ async def mock_get_entries_for_summoner(summoner_id, platform):
             "wins": 12,
             "losses": 90,
             "hotStreak": False,
-        }
+        },
+        {
+            "queueType": "RANKED_TFT_TURBO",
+            "ratedTier": "ORANGE",
+            "ratedRating": "6464",
+            "wins": 54,
+            "losses": 147,
+        },
+        {
+            "queueType": "RANKED_TFT_TURBO_DOUBLE",
+            "ratedTier": "ORANGE",
+            "ratedRating": "6777",
+            "wins": 45,
+            "losses": 89,
+        },
     ]
 
 
@@ -36,7 +50,9 @@ async def mock_get_entries_for_summoner(summoner_id, platform):
 def test_profile(test_app, username):
     response = test_app.get(f"/profile/euw1/{username}")
     assert response.status_code == 200
-    assert "name" in response.json()
+    response_json = response.json()
+    assert "name" in response_json
+    assert len(response_json["other_queues"]) == 2
 
 
 @patch("app.routers.profile.get_summoner_by_name", summoner_not_found)
