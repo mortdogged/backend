@@ -12,22 +12,27 @@
 
 ### Installation
 ```bash
-poetry install
-poetry run pre-commit install
+pip install -r requirements-dev.txt
+pre-commit install
 ```
 
 ### Test
 ```bash
-poetry run pytest --cov=app --cov-fail-under=80 --cov-report xml
+pytest --cov=app --cov-fail-under=80 --cov-report xml
 ```
 
 ### Run
 Fill the `.env` file and run:
 ```
-poetry run python main.py
+python main.py
 ```
 
 or
 ```
 docker-compose up --build
+```
+
+### Build pip-tools
+```
+pip-compile requirements-dev.in
 ```
