@@ -26,34 +26,27 @@ certifi==2021.10.8
     # via
     #   httpcore
     #   httpx
-    #   requests
 cfgv==3.3.1
     # via pre-commit
 charset-normalizer==2.0.9
-    # via
-    #   httpx
-    #   requests
+    # via httpx
 click==8.0.3
     # via
     #   black
+    #   pip-tools
     #   uvicorn
 colorama==0.4.4
     # via
     #   bandit
     #   click
     #   pytest
-    #   uvicorn
 coverage[toml]==6.2
     # via pytest-cov
 deprecated==1.2.13
     # via redis
 distlib==0.3.3
     # via virtualenv
-dnspython==2.1.0
-    # via email-validator
-email-validator==1.1.3
-    # via fastapi
-fastapi[all]==0.70.0
+fastapi==0.70.0
     # via -r requirements.in
 filelock==3.4.0
     # via virtualenv
@@ -69,8 +62,6 @@ h11==0.12.0
     #   uvicorn
 httpcore==0.14.3
     # via httpx
-httptools==0.2.0
-    # via uvicorn
 httpx==0.21.1
     # via
     #   -r requirements.in
@@ -80,33 +71,27 @@ identify==2.4.0
 idna==3.3
     # via
     #   anyio
-    #   email-validator
-    #   requests
     #   rfc3986
 iniconfig==1.1.1
     # via pytest
 isort==5.10.1
     # via -r requirements-dev.in
-itsdangerous==2.0.1
-    # via fastapi
-jinja2==3.0.3
-    # via fastapi
-markupsafe==2.0.1
-    # via jinja2
 mccabe==0.6.1
     # via flake8
 mypy-extensions==0.4.3
     # via black
 nodeenv==1.6.0
     # via pre-commit
-orjson==3.6.5
-    # via fastapi
 packaging==21.3
     # via pytest
 pathspec==0.9.0
     # via black
 pbr==5.8.0
     # via stevedore
+pep517==0.12.0
+    # via pip-tools
+pip-tools==6.4.0
+    # via -r requirements-dev.in
 platformdirs==2.4.0
     # via
     #   black
@@ -119,8 +104,10 @@ py==1.11.0
     # via pytest
 pycodestyle==2.8.0
     # via flake8
-pydantic==1.8.2
-    # via fastapi
+pydantic[dotenv]==1.8.2
+    # via
+    #   -r requirements.in
+    #   fastapi
 pyflakes==2.4.0
     # via flake8
 pyparsing==3.0.6
@@ -135,27 +122,19 @@ pytest-asyncio==0.16.0
 pytest-cov==3.0.0
     # via -r requirements-dev.in
 python-dotenv==0.19.2
-    # via uvicorn
-python-multipart==0.0.5
-    # via fastapi
+    # via pydantic
 pyyaml==5.4.1
     # via
     #   bandit
-    #   fastapi
     #   pre-commit
-    #   uvicorn
 redis==4.0.2
     # via -r requirements.in
-requests==2.26.0
-    # via fastapi
 respx==0.19.0
     # via -r requirements-dev.in
 rfc3986[idna2008]==1.5.0
     # via httpx
 six==1.16.0
-    # via
-    #   python-multipart
-    #   virtualenv
+    # via virtualenv
 smmap==5.0.0
     # via gitdb
 sniffio==1.2.0
@@ -175,24 +154,21 @@ tomli==1.2.2
     # via
     #   black
     #   coverage
+    #   pep517
 typing-extensions==4.0.1
     # via
     #   black
     #   gitpython
     #   pydantic
-ujson==4.3.0
-    # via fastapi
-urllib3==1.26.7
-    # via requests
-uvicorn[standard]==0.15.0
-    # via
-    #   -r requirements.in
-    #   fastapi
+uvicorn==0.15.0
+    # via -r requirements.in
 virtualenv==20.10.0
     # via pre-commit
-watchgod==0.7
-    # via uvicorn
-websockets==10.1
-    # via uvicorn
+wheel==0.37.0
+    # via pip-tools
 wrapt==1.13.3
     # via deprecated
+
+# The following packages are considered to be unsafe in a requirements file:
+# pip
+# setuptools

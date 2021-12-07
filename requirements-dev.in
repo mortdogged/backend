@@ -9,3 +9,4 @@ pre-commit
 bandit 
 respx 
 pytest-asyncio
+pip-tools

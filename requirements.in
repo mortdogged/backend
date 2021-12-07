@@ -1,6 +1,7 @@
 --extra-index-url https://www.piwheels.org/simple
 
-fastapi[all]
+fastapi
 httpx
 redis
 uvicorn
+pydantic[dotenv]
