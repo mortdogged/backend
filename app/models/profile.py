@@ -12,6 +12,10 @@ class Homie(str):
         yield cls.validate
 
     @classmethod
+    def __modify_schema__(cls, field_schema):
+        field_schema.update(enum=cls.homies)
+
+    @classmethod
     def validate(cls, v):
         if not isinstance(v, str):
             raise TypeError("string required")
