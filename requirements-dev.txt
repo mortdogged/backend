@@ -26,10 +26,13 @@ certifi==2021.10.8
     # via
     #   httpcore
     #   httpx
+    #   requests
 cfgv==3.3.1
     # via pre-commit
 charset-normalizer==2.0.9
-    # via httpx
+    # via
+    #   httpx
+    #   requests
 click==8.0.3
     # via
     #   black
@@ -71,6 +74,7 @@ identify==2.4.0
 idna==3.3
     # via
     #   anyio
+    #   requests
     #   rfc3986
 iniconfig==1.1.1
     # via pytest
@@ -129,6 +133,8 @@ pyyaml==5.4.1
     #   pre-commit
 redis==4.0.2
     # via -r requirements.in
+requests==2.26.0
+    # via -r requirements-dev.in
 respx==0.19.0
     # via -r requirements-dev.in
 rfc3986[idna2008]==1.5.0
@@ -160,6 +166,8 @@ typing-extensions==4.0.1
     #   black
     #   gitpython
     #   pydantic
+urllib3==1.26.7
+    # via requests
 uvicorn==0.15.0
     # via -r requirements.in
 virtualenv==20.10.0

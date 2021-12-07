@@ -1,5 +1,6 @@
 -r requirements.in
 
+requests
 flake8
 black
 isort
