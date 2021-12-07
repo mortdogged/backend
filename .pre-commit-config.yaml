@@ -8,25 +8,25 @@ repos:
     hooks:
       - id: isort
         name: isort
-        entry: poetry run isort
+        entry: isort
         types: [python]
         language: system
         args: ["--profile", "black"]
 
       - id: black
         name: black
-        entry: poetry run black
+        entry: black
         types: [python]
         language: system
 
       - id: flake8
         name: flake8
-        entry: poetry run flake8 --max-line-length=88 --extend-ignore=E203 --per-file-ignores="__init__.py:F401"
+        entry: flake8 --max-line-length=88 --extend-ignore=E203 --per-file-ignores="__init__.py:F401"
         types: [python]
         language: system
 
       - id: bandit
         name: bandit
-        entry: poetry run bandit -x tests/
+        entry: bandit -x tests/
         types: [python]
         language: system

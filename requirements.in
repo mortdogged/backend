@@ -1,0 +1,6 @@
+--extra-index-url https://www.piwheels.org/simple
+
+fastapi[all]
+httpx
+redis
+uvicorn

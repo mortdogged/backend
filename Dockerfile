@@ -5,13 +5,9 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+COPY requirements.txt .
+
 RUN pip install --upgrade pip \
-    && pip install \
-    fastapi \
-    uvicorn \
-    httpx \
-    redis \
-    pydantic[dotenv] \
-    --extra-index-url=https://www.piwheels.org/simple
+    && pip install -r requirements.txt
 
 COPY . .
