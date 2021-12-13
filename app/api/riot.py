@@ -49,7 +49,7 @@ async def get_entries_for_summoner(summoner_id: str, platform: PLATFORMS):
 async def get_matches(puuid: str, region: REGIONS):
     async with AsyncClient() as client:
         matches_returned = 1000
-        url = "match/v1/matches/by-puuid"
+        
         r = await client.get(
             f"{BASE_URL.format(region)}/match/v1/matches/by-puuid/"
             f"{puuid}/ids?count={matches_returned}",
