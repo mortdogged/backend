@@ -51,7 +51,8 @@ async def get_matches(puuid: str, region: REGIONS):
         matches_returned = 1000
         url = "match/v1/matches/by-puuid"
         r = await client.get(
-            f"{BASE_URL.format(region)}/{url}/{puuid}/ids?count={matches_returned}",
+            f"{BASE_URL.format(region)}/match/v1/matches/by-puuid/"
+            f"{puuid}/ids?count={matches_returned}",
             headers={"X-Riot-Token": get_settings().api_key},
         )
     return r.json()
