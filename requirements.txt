@@ -20,11 +20,9 @@ charset-normalizer==2.0.9
     # via httpx
 click==8.0.3
     # via uvicorn
-colorama==0.4.4
-    # via click
 deprecated==1.2.13
     # via redis
-fastapi==0.70.0
+fastapi==0.70.1
     # via -r requirements.in
 h11==0.12.0
     # via
