@@ -55,7 +55,7 @@ starlette==0.16.0
     # via fastapi
 typing-extensions==4.0.1
     # via pydantic
-uvicorn==0.15.0
+uvicorn==0.16.0
     # via -r requirements.in
 wrapt==1.13.3
     # via deprecated
