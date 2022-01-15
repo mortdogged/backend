@@ -42,7 +42,7 @@ deprecated==1.2.13
     # via redis
 distlib==0.3.3
     # via virtualenv
-fastapi==0.70.1
+fastapi==0.71.0
     # via -r requirements.in
 filelock==3.4.0
     # via virtualenv
@@ -141,7 +141,7 @@ sniffio==1.2.0
     #   anyio
     #   httpcore
     #   httpx
-starlette==0.16.0
+starlette==0.17.1
     # via fastapi
 stevedore==3.5.0
     # via bandit
