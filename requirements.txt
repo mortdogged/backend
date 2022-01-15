@@ -36,13 +36,17 @@ idna==3.3
     # via
     #   anyio
     #   rfc3986
+packaging==21.3
+    # via redis
 pydantic[dotenv]==1.8.2
     # via
     #   -r requirements.in
     #   fastapi
+pyparsing==3.0.6
+    # via packaging
 python-dotenv==0.19.2
     # via pydantic
-redis==4.0.2
+redis==4.1.0
     # via -r requirements.in
 rfc3986[idna2008]==1.5.0
     # via httpx
