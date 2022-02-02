@@ -18,7 +18,7 @@ backports.entry-points-selectable==1.1.1
     # via virtualenv
 bandit==1.7.2
     # via -r requirements-dev.in
-black==21.12b0
+black==22.1.0
     # via -r requirements-dev.in
 certifi==2021.10.8
     # via
@@ -157,9 +157,7 @@ tomli==1.2.2
     #   coverage
     #   pep517
 typing-extensions==4.0.1
-    # via
-    #   black
-    #   pydantic
+    # via pydantic
 urllib3==1.26.7
     # via requests
 uvicorn==0.17.1
