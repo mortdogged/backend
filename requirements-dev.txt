@@ -111,7 +111,7 @@ pyflakes==2.4.0
     # via flake8
 pyparsing==3.0.6
     # via packaging
-pytest==6.2.5
+pytest==7.0.0
     # via
     #   -r requirements-dev.in
     #   pytest-asyncio
@@ -148,14 +148,13 @@ starlette==0.17.1
 stevedore==3.5.0
     # via bandit
 toml==0.10.2
-    # via
-    #   pre-commit
-    #   pytest
+    # via pre-commit
 tomli==1.2.2
     # via
     #   black
     #   coverage
     #   pep517
+    #   pytest
 typing-extensions==4.0.1
     # via pydantic
 urllib3==1.26.7
