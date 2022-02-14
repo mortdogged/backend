@@ -14,7 +14,7 @@ asgiref==3.4.1
     # via uvicorn
 attrs==21.2.0
     # via pytest
-backports.entry-points-selectable==1.1.1
+backports-entry-points-selectable==1.1.1
     # via virtualenv
 bandit==1.7.2
     # via -r requirements-dev.in
@@ -111,7 +111,7 @@ pyflakes==2.4.0
     # via flake8
 pyparsing==3.0.6
     # via packaging
-pytest==7.0.0
+pytest==7.0.1
     # via
     #   -r requirements-dev.in
     #   pytest-asyncio
