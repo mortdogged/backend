@@ -22,7 +22,7 @@ click==8.0.3
     # via uvicorn
 deprecated==1.2.13
     # via redis
-fastapi==0.73.0
+fastapi==0.74.1
     # via -r requirements.in
 h11==0.12.0
     # via
