@@ -42,7 +42,7 @@ deprecated==1.2.13
     # via redis
 distlib==0.3.3
     # via virtualenv
-fastapi==0.74.1
+fastapi==0.75.0
     # via -r requirements.in
 filelock==3.4.0
     # via virtualenv
