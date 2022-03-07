@@ -16,7 +16,7 @@ attrs==21.2.0
     # via pytest
 backports-entry-points-selectable==1.1.1
     # via virtualenv
-bandit==1.7.3
+bandit==1.7.4
     # via -r requirements-dev.in
 black==22.1.0
     # via -r requirements-dev.in
