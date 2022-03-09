@@ -27,6 +27,7 @@ python main.py
 ```
 
 or
+
 ```
 docker-compose up --build
 ```
