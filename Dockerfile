@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM balenalib/raspberry-pi-debian-python:3.9-buster-run
 
 WORKDIR /usr/src/app
 
