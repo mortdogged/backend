@@ -28,15 +28,10 @@ jobs:
       with:
         fail_ci_if_error: true
 
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          cd backend
-          git pull
-          sudo docker-compose down
-          sudo docker-compose up --build -d
+    - name: "Install deta"
+      run: curl -fsSL https://get.deta.dev/cli.sh | sh
+
+    - name: "Deploy"
+      env:
+        DETA_ACCESS_TOKEN: ${{ secrets.DETA_ACCESS_TOKEN }}
+      run: deta deploy

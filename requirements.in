@@ -1,5 +1,3 @@
---extra-index-url https://www.piwheels.org/simple
-
 fastapi
 httpx
 redis

@@ -26,12 +26,6 @@ Fill the `.env` file and run:
 python main.py
 ```
 
-or
-
-```
-docker-compose up --build
-```
-
 ### Build pip-tools
 ```
 pip-compile requirements-dev.in
