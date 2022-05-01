@@ -23,7 +23,7 @@ def create_application() -> FastAPI:
             return app.openapi_schema
         openapi_schema = get_openapi(
             title="MORTDOGGED API",
-            version="0.0.1",
+            version="0.0.2",
             description=DESCRIPTION,
             routes=app.routes,
         )
