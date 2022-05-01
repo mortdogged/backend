@@ -10,4 +10,5 @@ pre-commit
 bandit 
 respx 
 pytest-asyncio
-pip-tools
+pip-tools==6.6.0
+
