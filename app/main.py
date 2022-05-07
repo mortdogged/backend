@@ -1,9 +1,13 @@
+from http import HTTPStatus
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from fastapi.responses import JSONResponse
 
 from .consts import DESCRIPTION
-from .routers import matches, profile
+from .exceptions import InvalidAPIKeyException, SummonerNotFoundException
+from .routers import profile
 
 
 def create_application() -> FastAPI:
@@ -16,7 +20,18 @@ def create_application() -> FastAPI:
     )
 
     app.include_router(profile.router, prefix="/profile", tags=["profile"])
-    app.include_router(matches.router, prefix="/matches", tags=["matches"])
+
+    @app.exception_handler(SummonerNotFoundException)
+    async def summoner_not_found_exception_handler(request, exc):
+        return JSONResponse(
+            status_code=HTTPStatus.NOT_FOUND, content={"detail": "Summoner not found"}
+        )
+
+    @app.exception_handler(InvalidAPIKeyException)
+    async def invalid_api_key_exception_handler(request, exc):
+        return JSONResponse(
+            status_code=HTTPStatus.BAD_GATEWAY, content={"detail": "Invalid API Key"}
+        )
 
     def custom_openapi():
         if app.openapi_schema:

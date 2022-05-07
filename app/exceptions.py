@@ -1,6 +1,6 @@
-class SummonerNotFoundException(BaseException):
+class SummonerNotFoundException(Exception):
     ...
 
 
-class InvalidAPIKeyException(BaseException):
+class InvalidAPIKeyException(Exception):
     ...

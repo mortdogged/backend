@@ -44,6 +44,13 @@ async def mock_get_entries_for_summoner(summoner_id, platform):
     ]
 
 
+matches = ["1", "2", "3"]
+
+
+async def mock_get_matches(puuid, region):
+    return matches
+
+
 @pytest.mark.parametrize("username", ("stradivari96", "Stradivari 96"))
 @patch("app.routers.profile.get_summoner_by_name", mock_get_summoner_by_name)
 @patch("app.routers.profile.get_entries_for_summoner", mock_get_entries_for_summoner)
@@ -65,3 +72,18 @@ def test_profile_invalid_summoner_name(test_app):
 def test_profile_not_homie(test_app):
     response = test_app.get("/profile/euw1/notahomie")
     assert response.status_code == 422
+
+
+@patch("app.routers.profile.get_matches", mock_get_matches)
+@patch("app.routers.profile.get_summoner_by_name", mock_get_summoner_by_name)
+def test_list_matches(test_app):
+    response = test_app.get("profile/euw1/vivapy/matches")
+    assert response.status_code == 200
+    assert set(response.json()) == set(matches)
+
+
+@patch("app.routers.profile.get_summoner_by_name", summoner_not_found)
+def test_list_matches_invalid_summoner_name(test_app):
+    response = test_app.get("profile/euw1/vivapy/matches")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Summoner not found"
