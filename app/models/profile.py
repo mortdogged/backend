@@ -5,7 +5,7 @@ from pydantic import BaseModel, HttpUrl
 
 # https://pydantic-docs.helpmanual.io/usage/types/#custom-data-types
 class Homie(str):
-    homies = ["stradivari96", "frenfrenburger", "vivapy"]
+    homies = ["stradivari96", "frenfrenburger", "vivapy", "raconma"]
 
     @classmethod
     def __get_validators__(cls):

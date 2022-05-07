@@ -11,7 +11,7 @@ async def summoner_not_found(name, platform):
 
 
 async def mock_get_summoner_by_name(name, platform):
-    return {"id": "pepe", "profileIconId": 1}
+    return {"id": "pepe", "profileIconId": 1, "puuid": "puuid"}
 
 
 async def mock_get_entries_for_summoner(summoner_id, platform):

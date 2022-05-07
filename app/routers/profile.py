@@ -48,4 +48,4 @@ async def list_matches(
         summoner = await get_summoner_by_name(summ, platform)
         matches = await get_matches(summoner["puuid"], PLATFORM_TO_REGION[platform])
         result = set(matches) if result is None else result.intersection(matches)
-    return result
+    return sorted(result, reverse=True)
