@@ -13,7 +13,6 @@ BASE_URL = "https://{}.api.riotgames.com/tft"
 async def get_summoner_by_name(name: str, platform: PLATFORMS):
     response = get_cache().get(f"{name}-{platform}")
     if not response:
-
         async with AsyncClient() as client:
             r = await client.get(
                 f"{BASE_URL.format(platform)}/summoner/v1/summoners/by-name/{name}",
@@ -28,10 +27,11 @@ async def get_summoner_by_name(name: str, platform: PLATFORMS):
     else:
         response = json.loads(response)
 
-    if response["status"]["status_code"] == HTTPStatus.NOT_FOUND:
-        raise SummonerNotFoundException
-    elif response["status"]["status_code"] == HTTPStatus.FORBIDDEN:
-        raise InvalidAPIKeyException
+    if "status" in response:
+        if response["status"]["status_code"] == HTTPStatus.NOT_FOUND:
+            raise SummonerNotFoundException
+        if response["status"]["status_code"] == HTTPStatus.FORBIDDEN:
+            raise InvalidAPIKeyException
 
     return response
 

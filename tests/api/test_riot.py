@@ -15,7 +15,7 @@ profile_response = {
         "/global/default/v1/profile-icons/1.jpg"
     ),
 }
-summoner_response = {"id": "pepe", "profileIconId": 1, "status": {"status_code": 200}}
+summoner_response = {"id": "pepe", "profileIconId": 1}
 summoner_not_found_response = {
     "status": {"message": "Data not found - summoner not found", "status_code": 404}
 }
