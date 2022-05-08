@@ -1,4 +1,5 @@
 import json
+from http import HTTPStatus
 
 from httpx import AsyncClient
 
@@ -27,11 +28,9 @@ async def get_summoner_by_name(name: str, platform: PLATFORMS):
     else:
         response = json.loads(response)
 
-    if response == {
-        "status": {"message": "Data not found - summoner not found", "status_code": 404}
-    }:
+    if response["status"]["status_code"] == HTTPStatus.NOT_FOUND:
         raise SummonerNotFoundException
-    elif response == {"status": {"message": "Forbidden", "status_code": 403}}:
+    elif response["status"]["status_code"] == HTTPStatus.FORBIDDEN:
         raise InvalidAPIKeyException
 
     return response
