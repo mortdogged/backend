@@ -20,12 +20,10 @@ charset-normalizer==2.0.12
     # via httpx
 click==8.1.3
     # via uvicorn
-colorama==0.4.4
-    # via click
 deprecated==1.2.13
     # via redis
-fastapi==0.75.2
-    # via -r .\requirements.in
+fastapi==0.78.0
+    # via -r requirements.in
 h11==0.12.0
     # via
     #   httpcore
@@ -33,7 +31,7 @@ h11==0.12.0
 httpcore==0.14.7
     # via httpx
 httpx==0.22.0
-    # via -r .\requirements.in
+    # via -r requirements.in
 idna==3.3
     # via
     #   anyio
@@ -42,14 +40,14 @@ packaging==21.3
     # via redis
 pydantic[dotenv]==1.9.0
     # via
-    #   -r .\requirements.in
+    #   -r requirements.in
     #   fastapi
 pyparsing==3.0.8
     # via packaging
 python-dotenv==0.20.0
     # via pydantic
 redis==4.2.2
-    # via -r .\requirements.in
+    # via -r requirements.in
 rfc3986[idna2008]==1.5.0
     # via httpx
 sniffio==1.2.0
@@ -57,11 +55,11 @@ sniffio==1.2.0
     #   anyio
     #   httpcore
     #   httpx
-starlette==0.17.1
+starlette==0.19.1
     # via fastapi
 typing-extensions==4.2.0
     # via pydantic
 uvicorn==0.17.6
-    # via -r .\requirements.in
+    # via -r requirements.in
 wrapt==1.14.0
     # via deprecated
