@@ -8,8 +8,6 @@ anyio==3.5.0
     # via
     #   httpcore
     #   starlette
-asgiref==3.5.1
-    # via uvicorn
 async-timeout==4.0.2
     # via redis
 attrs==21.4.0
@@ -157,7 +155,7 @@ typing-extensions==4.2.0
     # via pydantic
 urllib3==1.26.9
     # via requests
-uvicorn==0.17.6
+uvicorn==0.18.2
     # via -r requirements.in
 virtualenv==20.14.1
     # via pre-commit
