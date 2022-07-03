@@ -8,8 +8,6 @@ anyio==3.5.0
     # via
     #   httpcore
     #   starlette
-asgiref==3.5.1
-    # via uvicorn
 async-timeout==4.0.2
     # via redis
 certifi==2021.10.8
@@ -59,7 +57,7 @@ starlette==0.19.1
     # via fastapi
 typing-extensions==4.2.0
     # via pydantic
-uvicorn==0.17.6
+uvicorn==0.18.2
     # via -r requirements.in
 wrapt==1.14.0
     # via deprecated
