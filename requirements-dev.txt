@@ -16,6 +16,8 @@ bandit==1.7.4
     # via -r requirements-dev.in
 black==22.3.0
     # via -r requirements-dev.in
+build==0.8.0
+    # via pip-tools
 certifi==2021.10.8
     # via
     #   httpcore
@@ -77,6 +79,7 @@ nodeenv==1.6.0
     # via pre-commit
 packaging==21.3
     # via
+    #   build
     #   pytest
     #   redis
 pathspec==0.9.0
@@ -84,8 +87,8 @@ pathspec==0.9.0
 pbr==5.8.1
     # via stevedore
 pep517==0.12.0
-    # via pip-tools
-pip-tools==6.6.1
+    # via build
+pip-tools==6.8.0
     # via -r requirements-dev.in
 platformdirs==2.5.2
     # via
@@ -148,6 +151,7 @@ toml==0.10.2
 tomli==2.0.1
     # via
     #   black
+    #   build
     #   coverage
     #   pep517
     #   pytest
