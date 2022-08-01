@@ -38,7 +38,7 @@ deprecated==1.2.13
     # via redis
 distlib==0.3.4
     # via virtualenv
-fastapi==0.78.0
+fastapi==0.79.0
     # via -r requirements.in
 filelock==3.6.0
     # via virtualenv
